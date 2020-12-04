@@ -95,7 +95,15 @@ On original modal, Select 'Back to Vercel' and installation will complete
 On Vercel page, click 'Continue'  
 Change 'REPOSITORY NAME' and click 'Continue'  
 On the 'Import Project' page we will transfer the Supabase secrets and keys here  
-
+  
+You'll need to change the success URL in Vercel (so that when payments, etc. are successfully completed, you will be redirected back to the correct logged in application page)  
+- Copy the live site URL  
+- Vercel -> App Dashboard -> Settings -> Environment Variables -> 'Add New' -> Plaintext  
+- 'name' = URL  
+- 'value' = '<live site url>'  
+- Select 'Save'  
+- Navigate to Vercel -> Deployments -> Select App -> Select the button with 3 dots (next to 'Visit')  
+- Select 'Redeploy' and then again 'REDEPLOY'  
 
 ### Configure Supabase Auth
 
@@ -142,13 +150,18 @@ For example, you can create business models with different pricing tiers, e.g.:
 
 ### Configure the Stripe customer portal
 
-1. Set your custom branding in the [settings](https://dashboard.stripe.com/settings/branding).
-1. Configure the Customer Portal [settings](https://dashboard.stripe.com/test/settings/billing/portal).
-1. Toggle on "Allow customers to update their payment methods".
-1. Toggle on "Allow customers to update subscriptions".
-1. Toggle on "Allow customers to cancel subscriptions".
-1. Add the products and prices that you want to allow customer to switch between.
-1. Set up the required business information and links.
+Set your custom branding in the [Settings](https://dashboard.stripe.com/settings/branding)  
+- Configure the [Customer Portal](https://dashboard.stripe.com/test/settings/billing/portal)  
+- Toggle on "Allow customers to update their payment methods"  
+- Toggle on "Allow customers to update subscriptions"  
+- Toggle on "Allow customers to cancel subscriptions"  
+- Add the products and prices that you want to allow customer to switch between  
+- Set up the required business information and links  
+- Set up  'Terms of service' and 'Privacy Policy'
+- Select 'Save'  
+- 'Open customer portal' Button will now work on the Vercel live app
+  
+
 
 ### That's it
 
