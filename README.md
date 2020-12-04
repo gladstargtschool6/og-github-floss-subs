@@ -34,7 +34,7 @@ Wait for your database to setup and start
 In your Supabase dashboard, go to the SQL editor  
 Navigate to 'Quick Start' section  
 Select 'Stripe Subscriptions' (this has the same content as the [`schema.sql` file](./schema.sql))  
-- This will set up another tab (Query 2' next to 'Query 1')  
+- This will set up another tab ('Query 2' next to 'Query 1')  
 Inside of this tab, mid to lower right on screen, select 'RUN' button  
 - When 'RUN' has completed, you should see the message 'Success. No rows returned' in 'Results' area  
 - You can check your 'Table Editor' tab and click on the table icon to make sure that your tables have been created (Or check same by navigating to 'Database' tab and selecting 'Tables')  
@@ -48,10 +48,10 @@ You can use third-party login providers like GitHub or Google. Refer to the [doc
 Go to Github Developer page [here](https://github.com/settings/applications/new)  
 Choose your 'Application Name'  
 Set 'Homepage URL' to 'https://nextjs-subscription-payments-starter.vercel.app/'  
-- You will need to return to this and change the Homepage URL as soon as Vercel sets up the live app so OAuth login functionality works  
 Set 'Authorization callback URL' to 'https://<your-project>.supabase.co/auth/v1/callback'  
 - <your-project> can be found by going to: Supabase -> 'Settings' tab -> API  
 - It is specifically only the letters between 'https://' and '.supabase.co' (for example: https://lnydivosxgnokkjgrmwv.supabase.co --- 'lnydivosxgnokkjgrmwv' would be all you need  
+  
 Select 'Register application'  
 You will be redirected to application page  
   
@@ -77,12 +77,12 @@ You will be prompted for these when deploying with Vercel
 ## Deploy with Vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fthorwebdev%2Fnextjs-subscription-payments&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY&envDescription=Add%20your%20API%20keys%20from%20the%20Supabase%20Dashboard&project-name=nextjs-subscription-payments&repo-name=nextjs-subscription-payments&demo-title=Next.js%20Subscription%20Payments%20Starter%20Demo&demo-url=https%3A%2F%2Fnextjs-subscription-payments-starter.vercel.app%2F&demo-image=https%3A%2F%2Fnextjs-subscription-payments-starter.vercel.app%2Fdemo.png&integration-ids=oac_pb1dqJT8Ry2D99Q0o9qXWIhJ)  
-You might be asked at this point to log-in -> follow your Vercel login steps
+You might be asked at this point to log-in -> follow your Vercel login steps  
 Re-name your project in 'PROJECT NAME' section
 Select 'Continue'  
 'Install Integrations' window appears - Select 'Install'  
 When modal pops up, choose 'Connect to Stripe' - Sign In or Sign Up to Stripe as necessary  
-On the next page, you can chose to work in 'Development Mode' and choose 'Skip this account form' on top of page  
+On the next page, you can choose to work in 'Development Mode' and choose 'Skip this account form' on top of page  
   
   
 #### Once your project has been deployed, continue with the configuration steps below. Note that this deployment step includes prompts for automatically creating a webhook endpoint for you.  
@@ -90,6 +90,7 @@ On the next page, you can chose to work in 'Development Mode' and choose 'Skip t
 
 Automatically set up the webhooks by selecting 'Set up webhooks'  
 - To make sure these webhooks have been set up properly, in a seperate tab navigate to 'Manage in Stripe Dashboard →'  Make sure the 'Developers' -> 'Webhooks' -> 'Description' reads "Created by Vercel deploy integration."  
+
 On original modal, Select 'Back to Vercel' and installation will complete  
 On Vercel page, click 'Continue'  
 Change 'REPOSITORY NAME' and click 'Continue'  
