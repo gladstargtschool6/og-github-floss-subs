@@ -10,7 +10,7 @@ export default function Pricing({ products }) {
   console.log(products)
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const defaultImage = "https://i.imgur.com/7vBjH6B.jpg"
+  const defaultImage = "https://i.imgur.com/Frm0OBA.jpg"
   const { session, userLoaded } = useUser();
   const handleCheckout = async (price) => {
     setLoading(true);
@@ -61,7 +61,7 @@ export default function Pricing({ products }) {
                 className={'rounded-lg shadow-sm divide-y divide-accents-2 bg-primary-2'}
               >
                 <div className="p-6">
-                  <div>
+                  <div className="h-1/2">
                     <img src={product.image ? product.image : defaultImage} alt={product.name} />
                   </div>
                   <h2 className="text-2xl mt-4 leading-6 font-semibold text-white">
