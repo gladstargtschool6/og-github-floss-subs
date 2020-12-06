@@ -31,7 +31,7 @@ export default function Pricing({ products }) {
     setLoading(false);
   };
   return (
-    <section className="bg-black">
+    <section>
       <div className="max-w-6xl mx-auto py-8 sm:py-18 px-4 lg:px-8">
         <div className="sm:flex sm:flex-col sm:align-center">
           <h1 className="text-4xl font-extrabold text-white sm:text-center sm:text-6xl">

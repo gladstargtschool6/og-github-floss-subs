@@ -11,23 +11,22 @@ const Navbar = () => {
       <a href="#skip" className="sr-only focus:not-sr-only">
         Skip to content
       </a>
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl px-6 py-5">
         <div className="flex justify-between align-center flex-row py-4 md:py-6 relative">
-          <div className="flex flex-1 items-center justify-center ">
-         
+          <div className="flex flex-1 justify-evenly items-center justify-center text-xl">
             {/* <nav className="space-x-2 ml-6 hidden lg:block"> */}
             <Link href="/signup">
-                <a className={s.link}>Sign Up</a>
+              <a className={s.link}>SignUp</a>
             </Link>
             {user ? (
               <Link href="#">
                 <a className={s.link} onClick={() => signOut()}>
-                  Log Out
+                  LogOut
                 </a>
               </Link>
             ) : (
               <Link href="/signin">
-                <a className={s.link}>Log In</a>
+                <a className={s.link}>LogIn</a>
               </Link>
             )}
 
@@ -38,15 +37,12 @@ const Navbar = () => {
             </Link>
 
             <Link href="/">
-                <a className={s.link}>Pricing</a>
-              </Link>
-              <Link href="/account">
-                <a className={s.link}>Account</a>
-              </Link>
+              <a className={s.link}>Products</a>
+            </Link>
+            <Link href="/account">
+              <a className={s.link}>Account</a>
+            </Link>
             {/* </nav> */}
-
-           
-             
           </div>
 
           {/* <div className="flex flex-1 justify-end space-x-8">
