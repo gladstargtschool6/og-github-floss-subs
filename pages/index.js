@@ -1,6 +1,7 @@
 import { supabase } from '../utils/initSupabase';
 import Pricing from '../components/Pricing';
 
+//checking repository access
 export default function PricingPage({ products }) {
   return <Pricing products={products} />;
 }
