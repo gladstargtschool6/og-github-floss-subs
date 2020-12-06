@@ -2,6 +2,7 @@ import { supabase } from '../utils/initSupabase';
 import Pricing from '../components/Pricing';
 
 //checking repository access
+//can I still commit?
 export default function PricingPage({ products }) {
   return <Pricing products={products} />;
 }
