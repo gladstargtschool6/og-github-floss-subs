@@ -1,4 +1,4 @@
-import cn from 'classnames';
+
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { postData } from '../utils/helpers';
@@ -7,21 +7,18 @@ import { useUser } from '../components/UserContext';
 import Button from './ui/Button';
 
 export default function Pricing({ products }) {
-  const [billingInterval, setBillingInterval] = useState('month');
+  console.log(products)
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { session, userLoaded, subscription } = useUser();
-
+  const defaultImage = "https://i.imgur.com/7vBjH6B.jpg"
+  const { session, userLoaded } = useUser();
   const handleCheckout = async (price) => {
     setLoading(true);
     if (!session) {
       router.push('/signin');
       return;
     }
-    if (subscription) {
-      router.push('/account');
-      return;
-    }
+    
     const { sessionId, error: apiError } = await postData({
       url: '/api/createCheckoutSession',
       data: { price },
@@ -33,52 +30,26 @@ export default function Pricing({ products }) {
     if (stripeError) alert(error.message);
     setLoading(false);
   };
-
   return (
     <section className="bg-black">
-      <div className="max-w-6xl mx-auto py-8 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto py-8 sm:py-18 px-4 lg:px-8">
         <div className="sm:flex sm:flex-col sm:align-center">
           <h1 className="text-4xl font-extrabold text-white sm:text-center sm:text-6xl">
-            Pricing Plans
+            Products
           </h1>
           <p className="mt-5 text-xl text-accents-6 sm:text-center sm:text-2xl max-w-2xl m-auto">
-            Start building for free, then add a site plan to go live. Account
-            plans unlock additional features.
+            Start building for free, then add a site plan to go live.
+            <br /> 
+            Account plans unlock additional features.
           </p>
           <div className="relative self-center mt-6 bg-primary-2 rounded-lg p-0.5 flex sm:mt-8 border border-accents-0">
-            <button
-              onClick={() => setBillingInterval('month')}
-              type="button"
-              className={`${
-                billingInterval === 'month'
-                  ? 'relative w-1/2 bg-accents-1 border-accents-0 shadow-sm text-white'
-                  : 'ml-0.5 relative w-1/2 border border-transparent text-accents-4'
-              } rounded-md m-1 py-2 text-sm font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink focus:ring-opacity-50 focus:z-10 sm:w-auto sm:px-8`}
-            >
-              Monthly billing
-            </button>
-            <button
-              onClick={() => setBillingInterval('year')}
-              type="button"
-              className={`${
-                billingInterval === 'year'
-                  ? 'relative w-1/2 bg-accents-1 border-accents-0 shadow-sm text-white'
-                  : 'ml-0.5 relative w-1/2 border border-transparent text-accents-4'
-              } rounded-md m-1 py-2 text-sm font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink focus:ring-opacity-50 focus:z-10 sm:w-auto sm:px-8`}
-            >
-              Yearly billing
-            </button>
+            
           </div>
         </div>
         <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-4">
           {products.map((product) => {
-            const price = product.prices.find(
-              
-              (price) => {
-                debugger
-                price.interval === billingInterval
-              }
-            );
+              const price = product.prices[0]
+              let quantity = 0
             const priceString = new Intl.NumberFormat('en-US', {
               style: 'currency',
               currency: price.currency,
@@ -87,26 +58,21 @@ export default function Pricing({ products }) {
             return (
               <div
                 key={product.id}
-                className={cn(
-                  'rounded-lg shadow-sm divide-y divide-accents-2 bg-primary-2',
-                  {
-                    'border border-pink': subscription
-                      ? product.name === subscription?.prices?.products.name
-                      : product.name === 'Freelancer'
-                  }
-                )}
+                className={'rounded-lg shadow-sm divide-y divide-accents-2 bg-primary-2'}
               >
                 <div className="p-6">
-                  <h2 className="text-2xl leading-6 font-semibold text-white">
+                  <div>
+                    <img src={product.image ? product.image : defaultImage} alt={product.name} />
+                  </div>
+                  <h2 className="text-2xl mt-4 leading-6 font-semibold text-white">
                     {product.name}
                   </h2>
                   <p className="mt-4 text-accents-5">{product.description}</p>
                   <p className="mt-8">
-                    <span className="text-5xl font-extrabold white">
+                    <span className="text-2xl font-extrabold white">
                       {priceString}
                     </span>
                     <span className="text-base font-medium text-accents-8">
-                      /{billingInterval}
                     </span>
                   </p>
                   <Button
@@ -117,9 +83,8 @@ export default function Pricing({ products }) {
                     onClick={() => handleCheckout(price.id)}
                     className="mt-8 block w-full rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
                   >
-                    {product.name === subscription?.prices?.products.name
-                      ? 'Manage'
-                      : 'Subscribe'}
+                      Purchase
+                    
                   </Button>
                 </div>
               </div>

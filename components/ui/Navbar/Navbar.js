@@ -13,35 +13,45 @@ const Navbar = () => {
       </a>
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex justify-between align-center flex-row py-4 md:py-6 relative">
-          <div className="flex flex-1 items-center">
+          <div className="flex flex-1 items-center justify-center ">
+         
+            {/* <nav className="space-x-2 ml-6 hidden lg:block"> */}
+            <Link href="/signup">
+                <a className={s.link}>Sign Up</a>
+            </Link>
+            {user ? (
+              <Link href="#">
+                <a className={s.link} onClick={() => signOut()}>
+                  Log Out
+                </a>
+              </Link>
+            ) : (
+              <Link href="/signin">
+                <a className={s.link}>Log In</a>
+              </Link>
+            )}
+
             <Link href="/">
               <a className={s.logo} aria-label="Logo">
                 <Logo />
               </a>
             </Link>
-            <nav className="space-x-2 ml-6 hidden lg:block">
-              <Link href="/">
+
+            <Link href="/">
                 <a className={s.link}>Pricing</a>
               </Link>
               <Link href="/account">
                 <a className={s.link}>Account</a>
               </Link>
-            </nav>
+            {/* </nav> */}
+
+           
+             
           </div>
 
-          <div className="flex flex-1 justify-end space-x-8">
-            {user ? (
-              <Link href="#">
-                <a className={s.link} onClick={() => signOut()}>
-                  Sign out
-                </a>
-              </Link>
-            ) : (
-              <Link href="/signin">
-                <a className={s.link}>Sign in</a>
-              </Link>
-            )}
-          </div>
+          {/* <div className="flex flex-1 justify-end space-x-8">
+            
+          </div> */}
         </div>
       </div>
     </nav>
