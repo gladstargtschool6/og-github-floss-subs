@@ -20,7 +20,7 @@ export default function ProductCard({
 
   return (
     <div
-      key={product.id}
+      
       className={'rounded-lg shadow-sm divide-y divide-accents-2 bg-primary-2'}
     >
       <div className="p-6">
