@@ -52,7 +52,7 @@ export default function Pricing({ products }) {
               minimumFractionDigits: 0
             }).format(price.unit_amount / 100);
             return (
-              < ProductCard product={product} price={price} priceString={priceString} quantity={quantity} userLoaded={userLoaded} loading={loading} session={session} handleCheckout={handleCheckout} />
+              < ProductCard key={product.id} product={product} price={price} priceString={priceString} quantity={quantity} userLoaded={userLoaded} loading={loading} session={session} handleCheckout={handleCheckout} />
             );
           })}
         </div>
