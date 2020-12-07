@@ -52,11 +52,9 @@ const SignUp = () => {
   return (
     <form
       onSubmit={handleSignup}
-      className="w-80 flex flex-col justify-between p-3 max-w-lg m-auto my-64"
+      className="w-80 flex flex-col justify-between p-3 max-w-lg m-auto mt-28 mb-52"
     >
-      <div className="flex justify-center pb-12 ">
-        <Logo width="64px" height="64px" />
-      </div>
+    
       <div className="flex flex-col space-y-4">
         {message && (
           <div className="text-red border border-red p-3">{message}</div>
@@ -64,7 +62,7 @@ const SignUp = () => {
         <Input placeholder="Name" onChange={setName} />
         <Input type="email" placeholder="Email" onChange={setEmail} required />
         <Input type="password" placeholder="Password" onChange={setPassword} />
-        <div className="pt-2 w-full flex flex-col">
+        <div className="pt-1 w-full flex flex-col">
           <Button
             variant="slim"
             type="submit"
@@ -75,12 +73,12 @@ const SignUp = () => {
           </Button>
         </div>
 
-        <span className="pt-1 text-center text-sm">
-          <span className="text-accents-7">Do you have an account?</span>
+        <span className="text-center text-sm">
+          <span className="text-accents-7">Already have an account?</span>
           {` `}
           <Link href="/signin">
             <a className="text-accent-9 font-bold hover:underline cursor-pointer">
-              Sign In
+              Log In
             </a>
           </Link>
         </span>

@@ -19,7 +19,7 @@ export default function ProductCard({
   };
 
   return (
-    <div className={'rounded-lg shadow-sm divide-y divide-accents-2 bg-primary-2 max-w-xs h-auto '}>
+    <div className={'rounded-lg shadow-sm divide-y divide-accents-2 bg-primary-2 max-w-xs h-auto ml-3 m-2'}>
       <div className="grid grid-rows-2 p-4">
         <div className="grid justify-items-stretch box-content h-40 justify-center ">
           {product.image ? 
@@ -47,7 +47,7 @@ export default function ProductCard({
             <span className="text-base font-medium text-accents-8"></span>
           </p>
           <div className=" float-right -mt-7">
-            <label>Quantity &nbsp; &nbsp;</label>
+            <label>Quantity &nbsp;</label>
             <input className="text-black" min="1" max="99" type="number" value={quantity} onChange={onQuantityChange} />
           </div>
           <Button
