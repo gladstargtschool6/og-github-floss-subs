@@ -34,12 +34,15 @@ export default function ProductCard({
             alt={product.name}
           /> */}
         </div>
-        <div className="">
+        <div>
           <h2 className="text-2xl mt-4 leading-6 font-semibold text-white break-words">
             {product.name}
           </h2>
-          <p className="mt-4 text-accents-5">{product.description}</p>
-          <p className="mt-4">
+          <p className="mt-4 -mb-8 text-accents-5">{product.description}</p>
+          
+        </div>
+        <div className="-mt-8">
+          <p className="">
             <span className="text-2xl font-extrabold white">{priceString}</span>
             <span className="text-base font-medium text-accents-8"></span>
           </p>
@@ -47,18 +50,16 @@ export default function ProductCard({
             <label>Quantity &nbsp; &nbsp;</label>
             <input className="text-black" min="1" max="99" type="number" value={quantity} onChange={onQuantityChange} />
           </div>
-        </div>
-        <div className="">
-        <Button
-          variant="slim"
-          type="button"
-          disabled={session && !userLoaded}
-          loading={loading}
-          onClick={() => handleCheckout(price.id, quantity)}
-          className="mt-2 block w-full rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900 "
-        >
-          Purchase
-        </Button>
+          <Button
+            variant="slim"
+            type="button"
+            disabled={session && !userLoaded}
+            loading={loading}
+            onClick={() => handleCheckout(price.id, quantity)}
+            className="mt-4 block w-full rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900 "
+          >
+            Purchase
+          </Button>
         </div>
       </div>
     </div>

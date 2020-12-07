@@ -30,7 +30,7 @@ export default function Pricing({ products }) {
   };
   return (
     <section>
-      <div className="max-w-6xl mx-auto py-8 sm:py-18 px-4 lg:px-8">
+      <div className="max-w-6xl mx-auto py-6 sm:py-18 px-4 lg:px-8">
         <div className="sm:flex sm:flex-col sm:align-center">
           <h1 className="text-4xl font-extrabold text-white sm:text-center sm:text-6xl">
             Products
@@ -42,7 +42,7 @@ export default function Pricing({ products }) {
           </p>
           <div className="relative self-center mt-6 bg-primary-2 rounded-lg p-0.5 flex sm:mt-8 border border-accents-0"></div>
         </div>
-        <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-3 lg:grid-cols-4 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-4">
+        <div className="mt-12 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-3 lg:grid-cols-4 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-4">
           {products.map((product) => {
             const price = product.prices[0];
             let quantity = 0;
