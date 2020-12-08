@@ -28,7 +28,7 @@ const Navbar = () => {
               </Link>
             )}
 
-            <Link href="/">
+            <Link href="/about">
               <a className={s.logo} aria-label="Logo">
                 <Logo />
               </a>

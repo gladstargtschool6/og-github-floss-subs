@@ -33,7 +33,7 @@ export default function Pricing({ products }) {
       <div className="max-w-6xl mx-auto py-6 sm:py-18 px-2 lg:px-8 lg:pl-1">
         <div className="sm:flex sm:flex-col sm:align-center">
           <h1 className="text-4xl font-extrabold text-white sm:text-center sm:text-6xl">
-            Products
+            Product Page
           </h1>
           <p className="mt-5 text-xl text-accents-6 sm:text-center sm:text-2xl max-w-2xl m-auto">
             Start building for free, then add a site plan to go live.

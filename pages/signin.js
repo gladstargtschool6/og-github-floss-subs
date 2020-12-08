@@ -5,7 +5,6 @@ import { useUser } from '../components/UserContext';
 import LoadingDots from '../components/ui/LoadingDots';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
-import Logo from '../components/icons/Logo';
 import GitHub from '../components/icons/GitHub';
 
 const SignIn = () => {

@@ -5,7 +5,6 @@ import { supabase } from '../utils/initSupabase';
 import { useUser } from '../components/UserContext';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
-import Logo from '../components/icons/Logo';
 
 const SignUp = () => {
   const [user, setUser] = useState(null);
