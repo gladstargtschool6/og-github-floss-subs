@@ -16,21 +16,19 @@ const Navbar = () => {
           <div className="flex flex-1 justify-evenly items-center justify-center text-xl">
             {/* <nav className="space-x-2 ml-6 hidden lg:block"> */}
             <Link href="/signup">
-              <a className={s.link}>SignUp</a>
+              <a className={s.link}>Sign Up</a>
             </Link>
             {user ? (
               <Link href="#">
-                <a className={s.link} onClick={() => signOut()}>
-                  LogOut
-                </a>
+                <a className={s.link} onClick={() => signOut()}>Log Out</a>
               </Link>
             ) : (
               <Link href="/signin">
-                <a className={s.link}>LogIn</a>
+                <a className={s.link}>Log In</a>
               </Link>
             )}
 
-            <Link href="/">
+            <Link href="/about">
               <a className={s.logo} aria-label="Logo">
                 <Logo />
               </a>

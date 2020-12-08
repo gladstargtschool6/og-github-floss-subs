@@ -5,7 +5,6 @@ import { useUser } from '../components/UserContext';
 import LoadingDots from '../components/ui/LoadingDots';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
-import Logo from '../components/icons/Logo';
 import GitHub from '../components/icons/GitHub';
 
 const SignIn = () => {
@@ -49,11 +48,9 @@ const SignIn = () => {
 
   if (!user)
     return (
-      <div className="w-80 flex flex-col justify-between p-3 max-w-lg m-auto my-64">
+      <div className="w-80 flex flex-col justify-between p-3 max-w-lg m-auto mt-28 mb-44">
         <form onSubmit={handleSignin}>
-          <div className="flex justify-center pb-12 ">
-            <Logo width="64px" height="64px" />
-          </div>
+       
           <div className="flex flex-col space-y-4">
             {message && (
               <div
@@ -75,13 +72,13 @@ const SignIn = () => {
               placeholder="Password"
               onChange={setPassword}
             />
-            <div className="pt-2 w-full flex flex-col">
+            <div className="pt-1 w-full flex flex-col">
               <Button variant="slim" type="submit" loading={loading}>
                 {password.length ? 'Sign In' : 'Send Magic Link'}
               </Button>
             </div>
 
-            <span className="pt-1 text-center text-sm">
+            <span className=" text-center text-sm">
               <span className="text-accents-7">Don't have an account?</span>
               {` `}
               <Link href="/signup">

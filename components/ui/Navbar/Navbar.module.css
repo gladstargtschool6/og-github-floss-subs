@@ -18,7 +18,13 @@
   @apply cursor-pointer ring-transparent rounded-full transform duration-100 ease-in-out;
 
   &:hover {
-    @apply shadow-md;
+    /* @apply shadow-md; */
     transform: scale(1.25);
   }
 }
+
+/* .logo:hover:after {
+  font-size: 12px;
+  color: #f1f3f5;
+  content: 'About';
+} */
