@@ -85,12 +85,14 @@ const copyBillingDetailsToCustomer = async (uuid, payment_method) => {
 };
 
 const manageSubscriptionStatusChange = async (
+  
   subscriptionId,
   createAction = false
 ) => {
   const subscription = await stripe.subscriptions.retrieve(subscriptionId, {
     expand: ['default_payment_method']
   });
+  
   const customerId = subscription.customer;
   // Get customer's UUID from mapping table.
   const {
@@ -143,6 +145,7 @@ const manageSubscriptionStatusChange = async (
     `Inserted/updated subscription [${subscription.id}] for user [${uuid}]`
   );
 };
+
 
 export {
   upsertProductRecord,
