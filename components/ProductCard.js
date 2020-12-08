@@ -10,7 +10,6 @@ export default function ProductCard({
   userLoaded,
   loading
 }) {
-  const defaultImage = 'https://i.imgur.com/Frm0OBA.jpg';
 
   const [quantity, changeQuantity] = useState(1);
 
@@ -29,10 +28,6 @@ export default function ProductCard({
           /> : <div className="bg-cover mt-8">
             <h1 className="text-3xl text-center break-words ">No Image Available</h1>
             </div>}
-          {/* <img
-            src={product.image ? product.image :  <div><h1>No Image Available</h1></div>}
-            alt={product.name}
-          /> */}
         </div>
         <div>
           <h2 className="text-2xl mt-4 leading-6 font-semibold text-white break-words">
@@ -48,7 +43,7 @@ export default function ProductCard({
           </p>
           <div className=" float-right -mt-7">
             <label>Quantity &nbsp;</label>
-            <input className="text-black" min="1" max="99" type="number" value={quantity} onChange={onQuantityChange} />
+            <input className="text-black w-8" min="1" max="99" type="number" value={quantity} onChange={onQuantityChange} />
           </div>
           <Button
             variant="slim"

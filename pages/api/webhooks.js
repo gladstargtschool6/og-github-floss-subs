@@ -70,6 +70,7 @@ const webhookHandler = async (req, res) => {
           case 'customer.subscription.updated':
           case 'customer.subscription.deleted':
             await manageSubscriptionStatusChange(
+              
               event.data.object.id,
               event.type === 'customer.subscription.created'
             );
