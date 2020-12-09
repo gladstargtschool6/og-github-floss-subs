@@ -3,6 +3,19 @@ import { supabase } from '../utils/initSupabase';
 
 export const UserContext = createContext();
 
+export const updateUsername = async (user, userName) => {
+  const userData = {
+    
+    ...user,
+    full_name: userName
+  };
+  const { error } = await supabaseAdmin
+    .from('users')
+    .insert([userData], { upsert: true });
+  if (error) throw error;
+  console.log(`User updated: ${user.id}`);
+};
+
 export const UserContextProvider = (props) => {
   const [userLoaded, setUserLoaded] = useState(false);
   const [session, setSession] = useState(null);

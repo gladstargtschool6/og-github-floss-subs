@@ -101,6 +101,7 @@ const SignIn = () => {
             aria-hidden="true"
           ></div>
         </div>
+        
 
         <Button
           variant="slim"
@@ -112,6 +113,7 @@ const SignIn = () => {
           <span className="ml-2">Continue with GitHub</span>
         </Button>
         <Button
+        className=""
           variant="slim"
           type="submit"
           disabled={loading}
