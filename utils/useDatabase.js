@@ -1,4 +1,5 @@
 import { supabaseAdmin } from './initSupabaseAdmin';
+import { supabase } from './initSupabase'
 import { stripe } from './initStripe';
 import { toDateTime } from './helpers';
 
@@ -18,6 +19,21 @@ const upsertProductRecord = async (product) => {
   if (error) throw error;
   console.log(`Product inserted/updated: ${product.id}`);
 };
+
+const updateUsername = async (user, userName) => {
+  const userData = {
+    
+    ...user,
+    full_name: userName
+  };
+  const { error } = await supabase
+    .from('users')
+    .update({full_name: userName})
+    .match({id: userData.id})
+  if (error) throw error;
+  console.log(`User updated: ${user.id}`);
+};
+
 
 const upsertPriceRecord = async (price) => {
   const priceData = {
@@ -148,6 +164,7 @@ const manageSubscriptionStatusChange = async (
 
 
 export {
+  updateUsername,
   upsertProductRecord,
   upsertPriceRecord,
   createOrRetrieveCustomer,
