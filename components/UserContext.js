@@ -21,7 +21,7 @@ export const UserContextProvider = (props) => {
   const [session, setSession] = useState(null);
   const [user, setUser] = useState(null);
   const [userDetails, setUserDetails] = useState(null);
-  const [subscription, setSubscription] = useState(null);
+  // const [subscription, setSubscription] = useState(null);
 
   useEffect(() => {
     const session = supabase.auth.session();
@@ -44,19 +44,20 @@ export const UserContextProvider = (props) => {
   const getUserDetails = () => supabase.from('users').select('*').single();
 
   // Get the user's trialing or active subscription.
-  const getSubscription = () =>
-    supabase
-      .from('subscriptions')
-      .select('*, prices(*, products(*))')
-      .in('status', ['trialing', 'active'])
-      .single();
+  // const getSubscription = () =>
+  //   supabase
+  //     .from('subscriptions')
+  //     .select('*, prices(*, products(*))')
+  //     .in('status', ['trialing', 'active'])
+  //     .single();
 
   useEffect(() => {
     if (user) {
-      Promise.allSettled([getUserDetails(), getSubscription()]).then(
+      // Promise.allSettled([getUserDetails(), getSubscription()]).then(
+      Promise.allSettled([getUserDetails()]).then(
         (results) => {
           setUserDetails(results[0].value.data);
-          setSubscription(results[1].value.data);
+          // setSubscription(results[1].value.data);
           setUserLoaded(true);
         }
       );
@@ -68,12 +69,12 @@ export const UserContextProvider = (props) => {
     user,
     userDetails,
     userLoaded,
-    subscription,
+    // subscription,
     signIn: (options) => supabase.auth.signIn(options),
     signUp: (options) => supabase.auth.signUp(options),
     signOut: () => {
       setUserDetails(null);
-      setSubscription(null);
+      // setSubscription(null);
       return supabase.auth.signOut();
     }
   };
