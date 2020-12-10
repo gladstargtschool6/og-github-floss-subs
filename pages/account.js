@@ -5,8 +5,7 @@ import { postData } from '../utils/helpers';
 import { useUser } from '../components/UserContext';
 import LoadingDots from '../components/ui/LoadingDots';
 import Button from '../components/ui/Button';
-// import { updateUsername } from '../utils/useDatabase'
-import updateUser from '../components/updateUser'
+import { updateUsername } from '../components/updateUser'
 
 function Card({ title, description, footer, children }) {
   return (
@@ -40,9 +39,8 @@ export default function Account() {
   }, [user]);
 
   const handleSubmit = () => {
-    // await updateUsername(user, userName)
-    updateUser(user, userName)
-    updateInfo(false)
+    updateUsername(user, userName);
+    updateInfo(false);
   }
 
   // const redirectToCustomerPortal = async () => {

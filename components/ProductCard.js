@@ -42,7 +42,7 @@ export default function ProductCard({
             <span className="text-base font-medium text-accents-8"></span>
           </p>
           <div className=" float-right -mt-7">
-            <label>Quantity &nbsp;</label>
+            <label>Qty &nbsp;</label>
             <input className="text-black w-8" min="1" max="99" type="number" value={quantity} onChange={onQuantityChange} />
           </div>
           <Button

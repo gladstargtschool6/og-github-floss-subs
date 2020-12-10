@@ -20,20 +20,6 @@ const upsertProductRecord = async (product) => {
   console.log(`Product inserted/updated: ${product.id}`);
 };
 
-const updateUsername = async (user, userName) => {
-  const userData = {
-    
-    ...user,
-    full_name: userName
-  };
-  const { error } = await supabase
-    .from('users')
-    .update({full_name: userName})
-    .match({id: userData.id})
-  if (error) throw error;
-  console.log(`User updated: ${user.id}`);
-};
-
 
 const upsertPriceRecord = async (price) => {
   const priceData = {
@@ -100,73 +86,72 @@ const copyBillingDetailsToCustomer = async (uuid, payment_method) => {
   if (error) throw error;
 };
 
-const manageSubscriptionStatusChange = async (
+// const manageSubscriptionStatusChange = async (
   
-  subscriptionId,
-  createAction = false
-) => {
-  const subscription = await stripe.subscriptions.retrieve(subscriptionId, {
-    expand: ['default_payment_method']
-  });
+//   subscriptionId,
+//   createAction = false
+// ) => {
+//   const subscription = await stripe.subscriptions.retrieve(subscriptionId, {
+//     expand: ['default_payment_method']
+//   });
   
-  const customerId = subscription.customer;
-  // Get customer's UUID from mapping table.
-  const {
-    data: { id: uuid },
-    error: noCustomerError
-  } = await supabaseAdmin
-    .from('customers')
-    .select('id')
-    .eq('stripe_customer_id', customerId)
-    .single();
-  if (noCustomerError) throw noCustomerError;
-  // For a new subscription copy the billing details to the customer object.
-  if (createAction && subscription.default_payment_method)
-    await copyBillingDetailsToCustomer(
-      uuid,
-      subscription.default_payment_method
-    );
-  // Upsert the latest status of the subscription object.
-  const subscriptionData = {
-    id: subscription.id,
-    user_id: uuid,
-    metadata: subscription.metadata,
-    status: subscription.status,
-    price_id: subscription.items.data[0].price.id,
-    quantity: subscription.quantity,
-    cancel_at_period_end: subscription.cancel_at_period_end,
-    cancel_at: subscription.cancel_at
-      ? toDateTime(subscription.cancel_at)
-      : null,
-    canceled_at: subscription.canceled_at
-      ? toDateTime(subscription.canceled_at)
-      : null,
-    current_period_start: toDateTime(subscription.current_period_start),
-    current_period_end: toDateTime(subscription.current_period_end),
-    created: toDateTime(subscription.created),
-    ended_at: subscription.ended_at ? toDateTime(subscription.ended_at) : null,
-    trial_start: subscription.trial_start
-      ? toDateTime(subscription.trial_start)
-      : null,
-    trial_end: subscription.trial_end
-      ? toDateTime(subscription.trial_end)
-      : null
-  };
+//   const customerId = subscription.customer;
+//   // Get customer's UUID from mapping table.
+//   const {
+//     data: { id: uuid },
+//     error: noCustomerError
+//   } = await supabaseAdmin
+//     .from('customers')
+//     .select('id')
+//     .eq('stripe_customer_id', customerId)
+//     .single();
+//   if (noCustomerError) throw noCustomerError;
+//   // For a new subscription copy the billing details to the customer object.
+//   if (createAction && subscription.default_payment_method)
+//     await copyBillingDetailsToCustomer(
+//       uuid,
+//       subscription.default_payment_method
+//     );
+//   // Upsert the latest status of the subscription object.
+//   const subscriptionData = {
+//     id: subscription.id,
+//     user_id: uuid,
+//     metadata: subscription.metadata,
+//     status: subscription.status,
+//     price_id: subscription.items.data[0].price.id,
+//     quantity: subscription.quantity,
+//     cancel_at_period_end: subscription.cancel_at_period_end,
+//     cancel_at: subscription.cancel_at
+//       ? toDateTime(subscription.cancel_at)
+//       : null,
+//     canceled_at: subscription.canceled_at
+//       ? toDateTime(subscription.canceled_at)
+//       : null,
+//     current_period_start: toDateTime(subscription.current_period_start),
+//     current_period_end: toDateTime(subscription.current_period_end),
+//     created: toDateTime(subscription.created),
+//     ended_at: subscription.ended_at ? toDateTime(subscription.ended_at) : null,
+//     trial_start: subscription.trial_start
+//       ? toDateTime(subscription.trial_start)
+//       : null,
+//     trial_end: subscription.trial_end
+//       ? toDateTime(subscription.trial_end)
+//       : null
+//   };
 
-  const { error } = await supabaseAdmin
-    .from('subscriptions')
-    .insert([subscriptionData], { upsert: true });
-  if (error) throw error;
-  console.log(
-    `Inserted/updated subscription [${subscription.id}] for user [${uuid}]`
-  );
-};
+//   const { error } = await supabaseAdmin
+//     .from('subscriptions')
+//     .insert([subscriptionData], { upsert: true });
+//   if (error) throw error;
+//   console.log(
+//     `Inserted/updated subscription [${subscription.id}] for user [${uuid}]`
+//   );
+// };
 
 
 export {
-  updateUsername,
   upsertProductRecord,
   upsertPriceRecord,
-  createOrRetrieveCustomer,
-  manageSubscriptionStatusChange
+  createOrRetrieveCustomer
+  // manageSubscriptionStatusChange
 };
