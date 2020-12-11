@@ -27,43 +27,46 @@ Sign up to Supabase - [https://app.supabase.io](https://app.supabase.io)
 Select 'new project'  
 Choose organization - If this is your first time using Supabase, you'll have to select and set up 'New organization'  
 Determine 'Name' and 'Password' select 'Next'  
-Wait for your database to setup and start  
+Wait for your database to setup and start
 
 ### 2. Set up your database tables and auth policies
 
 In your Supabase dashboard, go to the SQL editor  
 Navigate to 'Quick Start' section  
-Select 'Stripe Subscriptions' (this has the same content as the [`schema.sql` file](./schema.sql))  
-- This will set up another tab ('Query 2' next to 'Query 1')  
-Inside of this tab, mid to lower right on screen, select 'RUN' button  
-- When 'RUN' has completed, you should see the message 'Success. No rows returned' in 'Results' area  
-- You can check your 'Table Editor' tab and click on the table icon to make sure that your tables have been created (Or check same by navigating to 'Database' tab and selecting 'Tables')  
+Select 'Stripe Subscriptions' (this has the same content as the [`schema.sql` file](./schema.sql))
 
+- This will set up another tab ('Query 2' next to 'Query 1')  
+  Inside of this tab, mid to lower right on screen, select 'RUN' button
+- When 'RUN' has completed, you should see the message 'Success. No rows returned' in 'Results' area
+- You can check your 'Table Editor' tab and click on the table icon to make sure that your tables have been created (Or check same by navigating to 'Database' tab and selecting 'Tables')
 
 #### [Optional] - Set up OAuth providers
 
 You can use third-party login providers like GitHub or Google. Refer to the [docs](https://supabase.io/docs/guides/auth#third-party-logins) to learn how to configure these.
 
-##### GitHub example: 
+##### GitHub example:
+
 Go to Github Developer page [here](https://github.com/settings/applications/new)  
 Choose your 'Application Name'  
 Set 'Homepage URL' to 'https://nextjs-subscription-payments-starter.vercel.app/'  
-Set 'Authorization callback URL' to 'https://<your-project>.supabase.co/auth/v1/callback'  
-- <your-project> can be found by going to: Supabase -> 'Settings' tab -> API  
-- It is specifically only the letters between 'https://' and '.supabase.co' (for example: https://lnydivosxgnokkjgrmwv.supabase.co --- 'lnydivosxgnokkjgrmwv' would be all you need  
-  
+Set 'Authorization callback URL' to 'https://<your-project>.supabase.co/auth/v1/callback'
+
+- "<your-project>" can be found by going to: Supabase -> 'Settings' tab -> API
+- It is specifically only the letters between 'https://' and '.supabase.co' (for example: https://lnydivosxgnokkjgrmwv.supabase.co --- 'lnydivosxgnokkjgrmwv' would be all you need
+
 Select 'Register application'  
-You will be redirected to application page  
-  
+You will be redirected to application page
+
 Back in Supabase go to 'Authentication' tab -> 'Settings' -> 'EXTERNAL OAUTH PROVIDERS'
 Toggle 'GITHUB EMABLED' to active  
-Copy and paste from the GitHub application page the 'Client ID' back to Supabase 
+Copy and paste from the GitHub application page the 'Client ID' back to Supabase
 On GitHub page select 'Generate a new client secret'
 Copy and paste this 'Client secrets' back to Supabase
-Select 'Save'  
-  
+Select 'Save'
+
 Same Tab -> 'GENERAL' section  
 Change 'SITE URL' from 'https://localhost/3000' to the name of your new Vercel app's live site
+
 - Check that you are now able to use the GitHub OAuth LogIn
 - Github OAuth will automatically supply the logged in account with Name & Email
 
@@ -82,108 +85,86 @@ Re-name your project in 'PROJECT NAME' section
 Select 'Continue'  
 'Install Integrations' window appears - Select 'Install'  
 When modal pops up, choose 'Connect to Stripe' - Sign In or Sign Up to Stripe as necessary  
-On the next page, you can choose to work in 'Development Mode' and choose 'Skip this account form' on top of page  
-  
-  
-#### Once your project has been deployed, continue with the configuration steps below. Note that this deployment step includes prompts for automatically creating a webhook endpoint for you.  
-  
+On the next page, you can choose to work in 'Development Mode' and choose 'Skip this account form' on top of page
 
-Automatically set up the webhooks by selecting 'Set up webhooks'  
-- To make sure these webhooks have been set up properly, in a seperate tab navigate to 'Manage in Stripe Dashboard →'  Make sure the 'Developers' -> 'Webhooks' -> 'Description' reads "Created by Vercel deploy integration."  
+#### Once your project has been deployed, continue with the configuration steps below. Note that this deployment step includes prompts for automatically creating a webhook endpoint for you.
+
+Automatically set up the webhooks by selecting 'Set up webhooks'
+
+- To make sure these webhooks have been set up properly, in a seperate tab navigate to 'Manage in Stripe Dashboard →' Make sure the 'Developers' -> 'Webhooks' -> 'Description' reads "Created by Vercel deploy integration."
 
 On original modal, Select 'Back to Vercel' and installation will complete  
 On Vercel page, click 'Continue'  
 Change 'REPOSITORY NAME' and click 'Continue'  
-On the 'Import Project' page we will transfer the Supabase secrets and keys here  
-  
-You'll need to change the success URL in Vercel (so that when payments, etc. are successfully completed, you will be redirected back to the correct logged in application page)  
-- Copy the live site URL  
-- Vercel -> App Dashboard -> Settings -> Environment Variables -> 'Add New' -> Plaintext  
-- 'name' = URL  
-- 'value' = '<live site url>'  
-- Select 'Save'  
-- Navigate to Vercel -> Deployments -> Select App -> Select the button with 3 dots (next to 'Visit')  
-- Select 'Redeploy' and then again 'REDEPLOY'  
+On the 'Import Project' page we will transfer the Supabase secrets and keys here
+
+You'll need to change the success URL in Vercel (so that when payments, etc. are successfully completed, you will be redirected back to the correct logged in application page)
+
+- Copy the live site URL
+- Vercel -> App Dashboard -> Settings -> Environment Variables -> 'Add New' -> Plaintext
+- 'name' = URL
+- 'value' = "<live site url>"
+- Select 'Save'
+- Navigate to Vercel -> Deployments -> Select App -> Select the button with 3 dots (next to 'Visit')
+- Select 'Redeploy' and then again 'REDEPLOY'
 
 ### Configure Supabase Auth
 
 Supabase -> 'Settings' tab -> API  
 Copy the deployment 'URL'  
-Navigate back to Vercel and set this as the value for 'NEXT_PUBLIC_SUPABASE_URL'  
-  
-Supabase -> 'Settings' tab -> API  
-Copy the 'API KEYS' anon public <value>    
-Navigate back to Vercel and set this as the value for 'NEXT_PUBLIC_SUPABASE_ANON_...'  
+Navigate back to Vercel and set this as the value for 'NEXT_PUBLIC_SUPABASE_URL'
 
 Supabase -> 'Settings' tab -> API  
-Copy the 'API KEYS' service_role <value>  
-Navigate back to Vercel and set this as the value for 'SUPABASE_SERVICE_ROLE_KEY'  
-  
+Copy the 'API KEYS' anon public "<value>"  
+Navigate back to Vercel and set this as the value for 'NEXT*PUBLIC_SUPABASE_ANON*...'
+
+Supabase -> 'Settings' tab -> API  
+Copy the 'API KEYS' service_role "<value>"  
+Navigate back to Vercel and set this as the value for 'SUPABASE_SERVICE_ROLE_KEY'
+
 Select 'Deploy'
 
+## Configure Stripe
 
-## Configure Stripe  
-  
-[Stripe Dashboard](https://dashboard.stripe.com)  
+[Stripe Dashboard](https://dashboard.stripe.com)
 
 ### Create Product and Pricing Information
 
-For Stripe to automatically bill your users for recurring payments, you need to create your product and pricing information in the [Stripe Products Tab](https://dashboard.stripe.com/test/products). When you create or update your product and price information, the changes are automatically synced with your Supabase database, as long as the webhook is configured correctly (the webhook creation is part of deploying to Vercel, the webhook endpoint is configured at the `/api/webhooks` path).  
+You'll need to create your product and pricing information in the [Stripe Products Tab](https://dashboard.stripe.com/test/products). When you create or update your product and price information, the changes are automatically synced with your Supabase database, as long as the webhook is configured correctly (the webhook creation is part of deploying to Vercel, the webhook endpoint is configured at the `/api/webhooks` path).
 
-Stripe Checkout currently supports pricing plans that bill a predefined amount at a specific interval. More complex plans (e.g. different pricing tiers or seats) are not yet supported.  
-
-For example, you can create business models with different pricing tiers, e.g.:  
-- IMPORTANT: At this time please make sure to set up BOTH monthly and yearly plans for each product added.
-
-- Product 1: Hobby
-  - Price 1: 10 USD per month
-  - Price 2: 100 USD per year
-  - Price 3: 8 GBP per month
-  - Price 4: 80 GBP per year
-  - [...]: additional currency and interval combinations
-- Product 2: Freelancer
-  - Price 1: 20 USD per month
-  - Price 2: 20 USD per year
-  - Price 3: 16 GBP per month
-  - Price 4: 160 GBP per year
-  - [...]: additional currency and interval combinations
+At this time, this template is only configured for one-off purchases. You may create as many products as desired, but pls. note that a customer will only be able to purchase one item at a time.
 
 ### Configure the Stripe customer portal
 
-Set your custom branding in the [Settings](https://dashboard.stripe.com/settings/branding)  
-- Configure the [Customer Portal](https://dashboard.stripe.com/test/settings/billing/portal)  
-- Toggle on "Allow customers to update their payment methods"  
-- Toggle on "Allow customers to update subscriptions"  
-- Toggle on "Allow customers to cancel subscriptions"  
-- Add the products and prices that you want to allow customer to switch between  
-- Set up the required business information and links  
-- Set up  'Terms of service' and 'Privacy Policy'
-- Select 'Save'  
-- 'Open customer portal' Button will now work on the Vercel live app
-  
+Set your custom branding in the [Settings](https://dashboard.stripe.com/settings/branding)
 
+- Configure the [Customer Portal](https://dashboard.stripe.com/test/settings/billing/portal)
+- Toggle on "Allow customers to update their payment methods"
+- Set up the required business information and links
+- Set up 'Terms of service' and 'Privacy Policy'
+- Select 'Save'
 
 ### That's it
 
-That's it, you're now ready to earn recurring revenue from your customers \o/
+That's it, you're now ready to bill your customers for one-off purchases \o/
 
 ## Develop locally
 
-If you've deployed the project with Vercel, it will have created a repository for you which you can clone to your local machine:  
-- Clone the repository in GitHub  
-- In your local machines' terminal, command: git clone <paste your cloned repo here>  
-- cd into your app  
-- Command: the cloned repo will be on the (master) branch, to change it to (main) command: git branch -M main  
-- Command: git add . 
-- Command: git commit -m "<your message here>" 
-- Command: git push  
-- In github, navigate to your repo -> Settings -> Branches  
-- In 'Default' section, from dropdown, select 'main', then choose 'update', 'I understand ...'  
-Must now change the branch directly in Vercel, also:  
-- Navigate directly to app's dashboard on Vercel  
-- 'Settings' -> 'Git' -> 'Production Branch'  
-- From the dropdown, select 'main', then 'Save'
+If you've deployed the project with Vercel, it will have created a repository for you which you can clone to your local machine:
 
+- Clone the repository in GitHub
+- In your local machines' terminal, command: git clone "<paste your cloned repo here>"
+- cd into your app
+- Command: the cloned repo will be on the (master) branch, to change it to (main) command: git branch -M main
+- Command: git add .
+- Command: git commit -m "<your message here>"
+- Command: git push
+- In github, navigate to your repo -> Settings -> Branches
+- In 'Default' section, from dropdown, select 'main', then choose 'update', 'I understand ...'  
+  Must now change the branch directly in Vercel, also:
+- Navigate directly to app's dashboard on Vercel
+- 'Settings' -> 'Git' -> 'Production Branch'
+- From the dropdown, select 'main', then 'Save'
 
 If you haven't deployed with Vercel, you can use [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
 

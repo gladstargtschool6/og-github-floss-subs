@@ -47,9 +47,10 @@ export default function Account() {
             Account
           </h1>
           <p className="mt-5 text-xl text-accents-6 sm:text-center sm:text-2xl max-w-2xl m-auto">
-            Customer Info Page 
+            Customer Info Page. 
             <br />
-            <span className="text-sm">Editing available on Name always & Email when not through 3rd party provider</span>
+            <span className="text-sm">Editing available on Name due to 3rd Party Provider Email Requirements</span>
+
           </p>
         </div>
       </div>
