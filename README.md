@@ -43,7 +43,69 @@ Inside of this tab, mid to lower right on screen, select 'RUN' button
 
 You can use third-party login providers GitHub, Google, Gitlab or Bitbucket. Refer to the [docs](https://supabase.io/docs/guides/auth#third-party-logins) to learn how to configure these. We have given Google & Github examples below.
 
-##### Google OAuth example:
+##### Google OAuth 2.0 example:
+
+Go to Google API's & Services / Dashboard page [here](https://console.developers.google.com/apis/dashboard)
+Next to 'GoogleAPIs' from the dropdown select 'NEW PROJECT' upper right hand corner  
+Specify 'Project name'  
+Click 'CREATE'
+A 'Notifications' modal will pop up, once project is created, choose 'SELECT PROJECT'
+
+Go to Credentials tab [here](https://console.developers.google.com/apis/credentials)  
+Select '+ CREATE CREDENTIALS' (upper middle section of the page)  
+Choose 'OAuth client ID'  
+Click 'CONFIGURE CONSENT SCREEN'  
+Choose 'External', click 'CREATE'
+
+In App Information section:  
+Fill in App name and User support email text boxes  
+In App Domain section:  
+Fill in Application home page information  
+The Privacy and Terms sections, you can put the same url in for now, and go back and change them when your app has these links  
+Authorize domains section:  
+Google will tell you (in red) the missing domain, click '+ ADD DOMAIN' and copy and paste in to the text field  
+Developer contact information:  
+Add your email  
+Click 'SAVE AND CONTINUE'  
+In the next Scopes section, you can add or remove scopes, or click 'SAVE AND CONTINUE'  
+In the Test Users fields, add any users that will be able to use the Google login while publishing status is set to "Testing"  
+Click 'SAVE AND CONTINUE'
+
+Select '+ CREATE CREDENTIALS' AGAIN  
+Choose 'OAuth client ID'  
+Application Type: select 'Web application'  
+Set 'Name\*' that you prefer  
+Set 'Authorization callback URL' to 'https://your-project.supabase.co/auth/v1/callback'
+Click 'CREATE'
+
+- "your-project" for the url above can be found by going to: Supabase -> 'Settings' tab -> API
+- It is specifically only the letters between 'https://' and '.supabase.co' (for example: https://lnydivosxgnokkjgrmwv.supabase.co --- 'lnydivosxgnokkjgrmwv' would be all you need  
+  OAuth Client Created modal will popup:  
+  Back in Supabase go to 'Authentication' tab -> 'Settings' -> 'EXTERNAL OAUTH PROVIDERS'  
+  Toggle 'GOOGLE ENABLED' to active  
+  Copy and paste from the Google modal the Client ID and SECRET back to Supabase  
+  Select 'Save'  
+  Same Tab -> 'GENERAL' section  
+  Change 'SITE URL' from 'https://localhost/3000' to the name of your new Vercel app's live site
+
+- Check that you are now able to use the Google OAuth LogIn
+- Google OAuth will automatically supply the logged in account with Name & Email
+
+\*You may need to verify ownership of the domain:  
+Navigate to Domain verification tab [here](https://console.developers.google.com/apis/credentials/domainverification)  
+Click 'Add domain'  
+Add in your live sites URL  
+Click 'ADD DOMAIN'  
+The Verify Ownership modal will pop up - Click 'TAKE ME THERE'  
+Click 'ADD A PROPERTY'  
+Specify your live site URL, again  
+Click 'Continue'  
+Click on 'Alternate methods' tab  
+Choose HTML tag and copy and paste the meta tag  
+Paste this tag into the 'head' section of your site's home or root page  
+Git push the change so that your live app is updated...google will look for this meta when it visits your site to verify ownership  
+Click 'VERIFY'  
+Google Will let post a message on the screen 'OWNERSHIP VERIFIED'
 
 ##### GitHub OAuth example:
 
@@ -58,7 +120,7 @@ Set 'Authorization callback URL' to 'https://your-project.supabase.co/auth/v1/ca
 Select 'Register application'  
 You will be redirected to application page  
 Back in Supabase go to 'Authentication' tab -> 'Settings' -> 'EXTERNAL OAUTH PROVIDERS'  
-Toggle 'GITHUB EMABLED' to active  
+Toggle 'GITHUB ENABLED' to active  
 Copy and paste from the GitHub application page the 'Client ID' back to Supabase  
 On GitHub page select 'Generate a new client secret'  
 Copy and paste this 'Client secrets' back to Supabase  
