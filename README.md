@@ -43,16 +43,17 @@ Inside of this tab, mid to lower right on screen, select 'RUN' button
 
 You can use third-party login providers GitHub, Google, Gitlab or Bitbucket. Refer to the [docs](https://supabase.io/docs/guides/auth#third-party-logins) to learn how to configure these. We have given Google & Github examples below.
 
-##### GitHub example:
+##### Google OAuth example:
+
+##### GitHub OAuth example:
 
 Go to Github Developer page [here](https://github.com/settings/applications/new)  
 Choose your 'Application Name'  
 Set 'Homepage URL' to 'https://nextjs-subscription-payments-starter.vercel.app/'  
-Set 'Authorization callback URL' to 'https://<your-project>.supabase.co/auth/v1/callback'
+Set 'Authorization callback URL' to 'https://your-project.supabase.co/auth/v1/callback'
 
-- "<your-project>" can be found by going to: Supabase -> 'Settings' tab -> API
-- It is specifically only the letters between 'https://' and '.supabase.co' (for example: https://lnydivosxgnokkjgrmwv.supabase.co --- 'lnydivosxgnokkjgrmwv' would be all you need  
-
+- "your-project" for the url above can be found by going to: Supabase -> 'Settings' tab -> API
+- It is specifically only the letters between 'https://' and '.supabase.co' (for example: https://lnydivosxgnokkjgrmwv.supabase.co --- 'lnydivosxgnokkjgrmwv' would be all you need
 
 Select 'Register application'  
 You will be redirected to application page  
@@ -101,7 +102,7 @@ You'll need to change the success URL in Vercel (so that when payments, etc. are
 - Copy the live site URL
 - Vercel -> App Dashboard -> Settings -> Environment Variables -> 'Add New' -> Plaintext
 - 'name' = URL
-- 'value' = "<live site url>"
+- 'value' = "live site url"
 - Select 'Save'
 - Navigate to Vercel -> Deployments -> Select App -> Select the button with 3 dots (next to 'Visit')
 - Select 'Redeploy' and then again 'REDEPLOY'
@@ -113,11 +114,11 @@ Copy the deployment 'URL'
 Navigate back to Vercel and set this as the value for 'NEXT_PUBLIC_SUPABASE_URL'
 
 Supabase -> 'Settings' tab -> API  
-Copy the 'API KEYS' anon public "<value>"  
+Copy the 'API KEYS' anon public "value"  
 Navigate back to Vercel and set this as the value for 'NEXT*PUBLIC_SUPABASE_ANON*...'
 
 Supabase -> 'Settings' tab -> API  
-Copy the 'API KEYS' service_role "<value>"  
+Copy the 'API KEYS' service_role "value"  
 Navigate back to Vercel and set this as the value for 'SUPABASE_SERVICE_ROLE_KEY'
 
 Select 'Deploy'
@@ -151,11 +152,11 @@ That's it, you're now ready to bill your customers for one-off purchases \o/
 If you've deployed the project with Vercel, it will have created a repository for you which you can clone to your local machine:
 
 - Clone the repository in GitHub
-- In your local machines' terminal, command: git clone "<paste your cloned repo here>"
+- In your local machines' terminal, command: git clone "paste your cloned repo here"
 - cd into your app
 - Command: the cloned repo will be on the (master) branch, to change it to (main) command: git branch -M main
 - Command: git add .
-- Command: git commit -m "<your message here>"
+- Command: git commit -m "your message here"
 - Command: git push
 - In github, navigate to your repo -> Settings -> Branches
 - In 'Default' section, from dropdown, select 'main', then choose 'update', 'I understand ...'  
