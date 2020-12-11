@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="mx-auto max-w-8xl px-6 bg-primary-2">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accents-2 py-12 text-primary transition-colors duration-150 bg-primary-2">
         <div className="col-span-1 lg:col-span-2">
-          <Link href="/">
+          <Link href="/about">
             <a className="flex flex-initial items-center font-bold md:mr-24">
               <span className="rounded-full border border-gray-700 mr-2">
                 <Logo />
@@ -19,15 +19,9 @@ export default function Footer() {
         </div>
         <div className="col-span-1 lg:col-span-2">
           <ul className="flex flex-initial flex-col md:flex-1">
+         
             <li className="py-3 md:py-0 md:pb-4">
-              <Link href="/">
-                <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
-                  Home
-                </a>
-              </Link>
-            </li>
-            <li className="py-3 md:py-0 md:pb-4">
-              <Link href="/">
+              <Link href="/about">
                 <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
                   About
                 </a>
@@ -36,12 +30,19 @@ export default function Footer() {
             <li className="py-3 md:py-0 md:pb-4">
               <Link href="/">
                 <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
+                  Products
+                </a>
+              </Link>
+            </li>
+            <li className="py-3 md:py-0 md:pb-4">
+              <Link href="/careers">
+                <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
                   Careers
                 </a>
               </Link>
             </li>
             <li className="py-3 md:py-0 md:pb-4">
-              <Link href="/">
+              <Link href="/blog">
                 <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
                   Blog
                 </a>

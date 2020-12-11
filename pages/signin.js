@@ -113,7 +113,7 @@ const SignIn = () => {
           <span className="ml-2">Continue with GitHub</span>
         </Button>
         <Button
-        className=""
+        className="my-5"
           variant="slim"
           type="submit"
           disabled={loading}
