@@ -14,7 +14,7 @@ export default function ProductCard({
   const [quantity, changeQuantity] = useState(1);
 
   const onQuantityChange = (e) => {
-      changeQuantity(prevQuantity => prevQuantity = e.target.value);
+      changeQuantity(e.target.value);
   };
 
   return (

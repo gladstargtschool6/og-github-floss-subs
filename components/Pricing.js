@@ -6,7 +6,6 @@ import { useUser } from '../components/UserContext';
 import ProductCard from './ProductCard';
 
 export default function Pricing({ products }) {
-  console.log(products);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { session, userLoaded } = useUser();
@@ -19,7 +18,7 @@ export default function Pricing({ products }) {
 
     const { sessionId, error: apiError } = await postData({
       url: '/api/createCheckoutSession',
-      data: { price },
+      data: { price, quantity },
       token: session.access_token
     });
     if (apiError) return alert(apiError.message);

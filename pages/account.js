@@ -23,10 +23,6 @@ export default function Account() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { userLoaded, user, session, userDetails} = useUser();
-
-  console.log('user:', user);
-  console.log('userDetails:', userDetails);
-
   const [userName, changeName] = useState(userDetails?.full_name);
   const [isEdit, updateInfo] = useState(false);
 
