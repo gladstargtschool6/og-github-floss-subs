@@ -36,9 +36,9 @@ export default function Pricing({ products }) {
             Product Page
           </h1>
           <p className="mt-5 text-xl text-accents-6 sm:text-center sm:text-2xl max-w-2xl m-auto">
-            Start building for free, then add a site plan to go live.
+            We partnered with Stripe for simplified billing.
             <br />
-            Account plans unlock additional features.
+            Start building for free
           </p>
           <div className="relative self-center mt-6 bg-primary-2 rounded-lg p-0.5 flex sm:mt-8 border border-accents-0"></div>
         </div>
