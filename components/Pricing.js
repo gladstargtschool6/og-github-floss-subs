@@ -6,7 +6,6 @@ import { useUser } from '../components/UserContext';
 import ProductCard from './ProductCard';
 
 export default function Pricing({ products }) {
-  console.log(products);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { session, userLoaded } = useUser();
