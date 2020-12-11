@@ -3,19 +3,6 @@ import { supabase } from '../utils/initSupabase';
 
 export const UserContext = createContext();
 
-export const updateUsername = async (user, userName) => {
-  const userData = {
-    
-    ...user,
-    full_name: userName
-  };
-  const { error } = await supabaseAdmin
-    .from('users')
-    .insert([userData], { upsert: true });
-  if (error) throw error;
-  console.log(`User updated: ${user.id}`);
-};
-
 export const UserContextProvider = (props) => {
   const [userLoaded, setUserLoaded] = useState(false);
   const [session, setSession] = useState(null);
@@ -43,21 +30,12 @@ export const UserContextProvider = (props) => {
   // Get the user details.
   const getUserDetails = () => supabase.from('users').select('*').single();
 
-  // Get the user's trialing or active subscription.
-  // const getSubscription = () =>
-  //   supabase
-  //     .from('subscriptions')
-  //     .select('*, prices(*, products(*))')
-  //     .in('status', ['trialing', 'active'])
-  //     .single();
-
   useEffect(() => {
     if (user) {
       // Promise.allSettled([getUserDetails(), getSubscription()]).then(
       Promise.allSettled([getUserDetails()]).then(
         (results) => {
           setUserDetails(results[0].value.data);
-          // setSubscription(results[1].value.data);
           setUserLoaded(true);
         }
       );
@@ -69,12 +47,10 @@ export const UserContextProvider = (props) => {
     user,
     userDetails,
     userLoaded,
-    // subscription,
     signIn: (options) => supabase.auth.signIn(options),
     signUp: (options) => supabase.auth.signUp(options),
     signOut: () => {
       setUserDetails(null);
-      // setSubscription(null);
       return supabase.auth.signOut();
     }
   };
