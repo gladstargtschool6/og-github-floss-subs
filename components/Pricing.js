@@ -18,7 +18,7 @@ export default function Pricing({ products }) {
 
     const { sessionId, error: apiError } = await postData({
       url: '/api/createCheckoutSession',
-      data: { price },
+      data: { price, quantity },
       token: session.access_token
     });
     if (apiError) return alert(apiError.message);
