@@ -39,7 +39,6 @@ export default function Pricing({ products }) {
             <br />
             Start building for free
           </p>
-          <div className="relative self-center mt-6 bg-primary-2 rounded-lg p-0.5 flex sm:mt-8 border border-accents-0"></div>
         </div>
         <div className="mt-12 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-3 lg:grid-cols-4 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-4">
           {products.map((product) => {
