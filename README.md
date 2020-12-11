@@ -165,6 +165,10 @@ If you've deployed the project with Vercel, it will have created a repository fo
 - 'Settings' -> 'Git' -> 'Production Branch'
 - From the dropdown, select 'main', then 'Save'
 
+When developing locally, change your supabase SITE URL (Authentication tab -> Settings -> SITE URL) back to 'http://localhost:3000/about' so that upon redirect, it doesn't direct you to your live app.
+
+- Don't forget to change this back after devopment updates so that the live app redirects properly upon login/signup
+
 If you haven't deployed with Vercel, you can use [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
 
 ```bash
