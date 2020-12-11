@@ -1,13 +1,13 @@
 # Next.js Subscription Payments Starter
 
-The all-in-one starter kit for high-performance SaaS applications. With a few clicks, Next.js developers can clone, deploy and fully customize their own SaaS subscription application.
+The all-in-one starter kit for high-performance SaaS applications. With a few clicks, Next.js developers can clone, deploy and fully customize their own SaaS one-off purchases application.
 
 ## Features
 
 - Secure user management and authentication with [Supabase](https://supabase.io/docs/guides/auth).
 - Powerful data access & management tooling on top of PostgreSQL with [Supabase](https://supabase.io/docs/guides/database).
 - Integration with [Stripe Checkout](https://stripe.com/docs/payments/checkout) and the [Stripe customer portal](https://stripe.com/docs/billing/subscriptions/customer-portal), all plumbing already set up.
-- Automatic syncing of pricing plans, and subscription statuses via [Stripe webhooks](https://stripe.com/docs/webhooks).
+- Automatic syncing of products via [Stripe webhooks](https://stripe.com/docs/webhooks).
 
 ## Demo
 
@@ -32,17 +32,16 @@ Wait for your database to setup and start
 ### 2. Set up your database tables and auth policies
 
 In your Supabase dashboard, go to the SQL editor  
-Navigate to 'Quick Start' section  
-Select 'Stripe Subscriptions' (this has the same content as the [`schema.sql` file](./schema.sql))
+Click on '+' in the upper right area, adding a new 'Query' tab  
+Copy the content from the `schema.sql` file in your repo directly into this tab  
+Inside of this tab, mid to lower right on screen, select 'RUN' button
 
-- This will set up another tab ('Query 2' next to 'Query 1')  
-  Inside of this tab, mid to lower right on screen, select 'RUN' button
 - When 'RUN' has completed, you should see the message 'Success. No rows returned' in 'Results' area
 - You can check your 'Table Editor' tab and click on the table icon to make sure that your tables have been created (Or check same by navigating to 'Database' tab and selecting 'Tables')
 
 #### [Optional] - Set up OAuth providers
 
-You can use third-party login providers like GitHub or Google. Refer to the [docs](https://supabase.io/docs/guides/auth#third-party-logins) to learn how to configure these.
+You can use third-party login providers GitHub, Google, Gitlab or Bitbucket. Refer to the [docs](https://supabase.io/docs/guides/auth#third-party-logins) to learn how to configure these. We have given Google & Github examples below.
 
 ##### GitHub example:
 
@@ -52,18 +51,17 @@ Set 'Homepage URL' to 'https://nextjs-subscription-payments-starter.vercel.app/'
 Set 'Authorization callback URL' to 'https://<your-project>.supabase.co/auth/v1/callback'
 
 - "<your-project>" can be found by going to: Supabase -> 'Settings' tab -> API
-- It is specifically only the letters between 'https://' and '.supabase.co' (for example: https://lnydivosxgnokkjgrmwv.supabase.co --- 'lnydivosxgnokkjgrmwv' would be all you need
+- It is specifically only the letters between 'https://' and '.supabase.co' (for example: https://lnydivosxgnokkjgrmwv.supabase.co --- 'lnydivosxgnokkjgrmwv' would be all you need  
+
 
 Select 'Register application'  
-You will be redirected to application page
-
-Back in Supabase go to 'Authentication' tab -> 'Settings' -> 'EXTERNAL OAUTH PROVIDERS'
+You will be redirected to application page  
+Back in Supabase go to 'Authentication' tab -> 'Settings' -> 'EXTERNAL OAUTH PROVIDERS'  
 Toggle 'GITHUB EMABLED' to active  
-Copy and paste from the GitHub application page the 'Client ID' back to Supabase
-On GitHub page select 'Generate a new client secret'
-Copy and paste this 'Client secrets' back to Supabase
-Select 'Save'
-
+Copy and paste from the GitHub application page the 'Client ID' back to Supabase  
+On GitHub page select 'Generate a new client secret'  
+Copy and paste this 'Client secrets' back to Supabase  
+Select 'Save'  
 Same Tab -> 'GENERAL' section  
 Change 'SITE URL' from 'https://localhost/3000' to the name of your new Vercel app's live site
 
@@ -81,7 +79,7 @@ You will be prompted for these when deploying with Vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fthorwebdev%2Fnextjs-subscription-payments&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_ROLE_KEY&envDescription=Add%20your%20API%20keys%20from%20the%20Supabase%20Dashboard&project-name=nextjs-subscription-payments&repo-name=nextjs-subscription-payments&demo-title=Next.js%20Subscription%20Payments%20Starter%20Demo&demo-url=https%3A%2F%2Fnextjs-subscription-payments-starter.vercel.app%2F&demo-image=https%3A%2F%2Fnextjs-subscription-payments-starter.vercel.app%2Fdemo.png&integration-ids=oac_pb1dqJT8Ry2D99Q0o9qXWIhJ)  
 You might be asked at this point to log-in -> follow your Vercel login steps  
-Re-name your project in 'PROJECT NAME' section
+Re-name your project in 'PROJECT NAME' section  
 Select 'Continue'  
 'Install Integrations' window appears - Select 'Install'  
 When modal pops up, choose 'Connect to Stripe' - Sign In or Sign Up to Stripe as necessary  
