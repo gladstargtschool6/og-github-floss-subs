@@ -45,7 +45,7 @@ export default function Account() {
           <p className="mt-5 text-xl text-accents-6 sm:text-center sm:text-2xl max-w-2xl m-auto">
             Customer Info Page. 
             <br />
-            <span className="text-sm">Editing available on Name due to 3rd Party Provider Email Requirements</span>
+            <span className="text-sm">Editing available only on Name due to 3rd Party Provider Email Requirements</span>
 
           </p>
         </div>

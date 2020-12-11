@@ -18,7 +18,7 @@ export default function ProductCard({
   };
 
   return (
-    <div className="rounded-lg shadow-sm divide-y divide-accents-2 bg-primary-2 max-w-xs ml-3 m-2">
+    <div className="rounded-lg shadow-sm divide-y divide-accents-2 bg-primary-2 max-w-xs ml-3">
       <div className="grid grid-rows-2 p-4">
         <div className="grid justify-items-stretch box-content h-40 justify-center ">
           {product.image ? 
